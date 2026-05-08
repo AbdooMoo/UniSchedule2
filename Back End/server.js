@@ -27,14 +27,11 @@ app.use('/api/chat', chatbotRoutes);
 app.use('/api/reviews', reviewRoutes);
  app.get('/api/health', (req, res) => res.json({ status: "ok" }));
 
-// --- PRODUCTION DEPLOYMENT LOGIC ---
-const path = require('path');
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../Front End/dist')));
+ const path = require('path');
+ app.use(express.static(path.join(__dirname, '../Front End/dist')));
 
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
-app.get('*', (req, res) => {
+ 
+app.get('/(.*)', (req, res) => {
   if (!req.path.startsWith('/api/')) {
     res.sendFile(path.join(__dirname, '../Front End/dist/index.html'));
   }
