@@ -5,8 +5,7 @@ router.post('/', async (req, res) => {
   try {
     const { message } = req.body;
     
-    // Fetch all data for context
-    const Course = require('../models/Course');
+     const Course = require('../models/Course');
     const Teacher = require('../models/Teacher');
     const Room = require('../models/Room');
     
@@ -31,8 +30,7 @@ router.post('/', async (req, res) => {
       return `- ${r.name}: Type ${r.type}, Capacity: ${r.capacity}`;
     }).join('\n');
 
-    // Using a system prompt to guide the AI
-    const systemPrompt = `You are UniSchedule AI, the official assistant for our university scheduling platform.
+     const systemPrompt = `You are UniSchedule AI, the official assistant for our university scheduling platform.
     You have deep knowledge of our instructors, lecture halls, and course schedules.
     
     GUIDELINES:
