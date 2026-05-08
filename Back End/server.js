@@ -31,7 +31,7 @@ app.use('/api/reviews', reviewRoutes);
  app.use(express.static(path.join(__dirname, '../Front End/dist')));
 
  
-app.get('/(.*)', (req, res) => {
+app.get(/.*/, (req, res) => {
   if (!req.path.startsWith('/api/')) {
     res.sendFile(path.join(__dirname, '../Front End/dist/index.html'));
   }
