@@ -10,7 +10,6 @@ const reviewSchema = new mongoose.Schema({
   comment: { type: String, default: '', maxlength: 500 },
 }, { timestamps: true });
 
-// One review per student per course
-reviewSchema.index({ student: 1, courseCode: 1 }, { unique: true });
+ reviewSchema.index({ student: 1, courseCode: 1 }, { unique: true });
 
 module.exports = mongoose.model('Review', reviewSchema);
