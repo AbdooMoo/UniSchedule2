@@ -4,8 +4,7 @@ const Request = require('../models/Request');
 const SystemSettings = require('../models/SystemSettings');
 const auth = require('../middleware/authMiddleware');
 
-// Get requests status
-router.get('/status', async (req, res) => {
+ router.get('/status', async (req, res) => {
   try {
     let settings = await SystemSettings.findOne();
     if (!settings) {
@@ -17,8 +16,7 @@ router.get('/status', async (req, res) => {
   }
 });
 
-// Toggle requests status (Admin)
-router.post('/toggle-status', auth, async (req, res) => {
+ router.post('/toggle-status', auth, async (req, res) => {
   try {
     if (req.user.role !== 'admin') return res.status(403).json({ message: 'Forbidden' });
     let settings = await SystemSettings.findOne();
@@ -34,8 +32,7 @@ router.post('/toggle-status', auth, async (req, res) => {
   }
 });
 
-// Get all requests (Admin)
-router.get('/', async (req, res) => {
+ router.get('/', async (req, res) => {
   try {
     const requests = await Request.find()
       .populate('student', 'name email studentId')
@@ -47,8 +44,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get requests for a specific student
-router.get('/student/:id', async (req, res) => {
+ router.get('/student/:id', async (req, res) => {
   try {
     const requests = await Request.find({ student: req.params.id })
       .populate('course', 'name code')
@@ -59,8 +55,7 @@ router.get('/student/:id', async (req, res) => {
   }
 });
 
-// Create a new request
-router.post('/', async (req, res) => {
+ router.post('/', async (req, res) => {
   try {
     const settings = await SystemSettings.findOne();
     if (!settings || !settings.isRequestsOpen) {
@@ -69,8 +64,7 @@ router.post('/', async (req, res) => {
 
     const { student, course, type, message } = req.body;
     
-    // Check if pending request already exists
-    const existing = await Request.findOne({ student, course, status: 'Pending' });
+     const existing = await Request.findOne({ student, course, status: 'Pending' });
     if (existing) {
       return res.status(400).json({ message: 'You already have a pending request for this course.' });
     }
@@ -92,8 +86,7 @@ function timeToMinutes(timeStr) {
   return h * 60 + m;
 }
 
-// Update request status (Admin)
-router.put('/:id', async (req, res) => {
+ router.put('/:id', async (req, res) => {
   try {
     const { status, adminReply, selectedSections } = req.body;
     const request = await Request.findById(req.params.id);
