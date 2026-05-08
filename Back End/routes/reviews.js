@@ -3,8 +3,7 @@ const router = express.Router();
 const Review = require('../models/Review');
 const auth = require('../middleware/authMiddleware');
 
-// POST /api/reviews — Student submits or updates a review
-router.post('/', auth, async (req, res) => {
+ router.post('/', auth, async (req, res) => {
   try {
     const { courseCode, courseName, instructorName, courseRating, instructorRating, comment } = req.body;
     if (!courseCode || !courseRating || !instructorRating) {
@@ -14,8 +13,7 @@ router.post('/', auth, async (req, res) => {
     const existing = await Review.findOne({ student: req.user.userId, courseCode });
 
     if (existing) {
-      // Update existing review
-      existing.courseRating = courseRating;
+       existing.courseRating = courseRating;
       existing.instructorRating = instructorRating;
       existing.comment = comment || '';
       existing.instructorName = instructorName || '';
@@ -40,8 +38,7 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
-// GET /api/reviews/my — Student gets their own reviews
-router.get('/my', auth, async (req, res) => {
+ router.get('/my', auth, async (req, res) => {
   try {
     const reviews = await Review.find({ student: req.user.userId });
     res.json(reviews);
@@ -50,15 +47,13 @@ router.get('/my', auth, async (req, res) => {
   }
 });
 
-// GET /api/reviews/all — Admin gets all reviews with averages per course
-router.get('/all', auth, async (req, res) => {
+ router.get('/all', auth, async (req, res) => {
   try {
     if (req.user.role !== 'admin') return res.status(403).json({ message: 'Access denied.' });
 
     const reviews = await Review.find().populate('student', 'name email');
 
-    // Aggregate by course
-    const map = {};
+     const map = {};
     for (const r of reviews) {
       if (!map[r.courseCode]) {
         map[r.courseCode] = {
