@@ -1,0 +1,9 @@
+ MobileApp/node_modules/
+Back End/node_modules/
+Front End/node_modules/
+node_modules/
+.env
+
+ MobileApp/.expo/
+
+ .DS_Store
