@@ -20,7 +20,7 @@ export default function Teachers() {
   const [selectedDetailsItem, setSelectedDetailsItem] = useState(null);
   const [form, setForm] = useState({ name: "", email: "", teacherId: "", department: "Computer Science", status: "Active" });
   useEffect(() => {
-    fetch("http://localhost:5001/api/teachers")
+    fetch("https://unischedule2-production.up.railway.app/api/teachers")
       .then(res => res.json())
       .then(data => setTeachers(data))
       .catch(err => console.error(err));
@@ -30,7 +30,7 @@ export default function Teachers() {
     (t.email?.toLowerCase().includes(search.toLowerCase()))
   );
   const handleSave = async () => {
-    const url = editTeacher ? `http://localhost:5001/api/teachers/${editTeacher._id}` : "http://localhost:5001/api/teachers";
+    const url = editTeacher ? `https://unischedule2-production.up.railway.app/api/teachers/${editTeacher._id}` : "https://unischedule2-production.up.railway.app/api/teachers";
     const res = await fetch(url, {
       method: editTeacher ? "PUT" : "POST",
       headers: { "Content-Type": "application/json" },
