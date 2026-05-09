@@ -89,7 +89,7 @@ export default function Teachers() {
                 <div style={{ position: "absolute", right: 0, top: "100%", background: "white", border: "1px solid #eee", borderRadius: "8px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)", zIndex: 100, minWidth: "140px" }}>
                   <div onClick={() => { setSelectedDetailsItem(t); setShowDetailsModal(true); setOpenMenu(null); }} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "10px 14px", cursor: "pointer", fontSize: "13px", color: "#1a431e", borderBottom: "1px solid #f5f5f5" }}><Eye size={14} /> View Details</div>
                   <div onClick={() => { setEditTeacher(t); setForm(t); setShowModal(true); setOpenMenu(null); }} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "10px 14px", cursor: "pointer", fontSize: "13px" }}><Edit2 size={14} /> Edit</div>
-                  <div onClick={async () => { await fetch(`http://localhost:5001/api/teachers/${t._id}`, { method: "DELETE" }); setTeachers(teachers.filter(item => item._id !== t._id)); }} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "10px 14px", cursor: "pointer", fontSize: "13px", color: "red" }}><Trash2 size={14} /> Delete</div>
+                  <div onClick={async () => { await fetch(`https://unischedule2-production.up.railway.app/api/teachers/${t._id}`, { method: "DELETE" }); setTeachers(teachers.filter(item => item._id !== t._id)); }} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "10px 14px", cursor: "pointer", fontSize: "13px", color: "red" }}><Trash2 size={14} /> Delete</div>
                 </div>
               )}
             </div>
