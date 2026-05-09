@@ -11,11 +11,11 @@ export default function Admins() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [isRegOpen, setIsRegOpen] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:5001/api/auth/admins")
+    fetch("https://unischedule2-production.up.railway.app/api/auth/admins")
       .then(res => res.json())
       .then(data => setAdmins(data))
       .catch(err => console.error(err));
-    fetch("http://localhost:5001/api/registration/status")
+    fetch("https://unischedule2-production.up.railway.app/api/registration/status")
       .then(res => res.json())
       .then(data => setIsRegOpen(data.isRegistrationOpen))
       .catch(err => console.error(err));
@@ -29,7 +29,7 @@ export default function Admins() {
       toast("Please fill all fields!", "warning");
       return;
     }
-    const res = await fetch("http://localhost:5001/api/auth/add-admin", {
+    const res = await fetch("https://unischedule2-production.up.railway.app/api/auth/add-admin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form)
@@ -54,7 +54,7 @@ export default function Admins() {
   const toggleRegistration = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch("http://localhost:5001/api/registration/toggle-status", {
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/registration/toggle-status", {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}` }
       });
