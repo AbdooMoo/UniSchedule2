@@ -45,7 +45,7 @@ export default function SettingsModal({ onClose }) {
     const updated = { ...user, profileImage: "" };
     localStorage.setItem("user", JSON.stringify(updated));
     try {
-      await fetch("unischedule2-production.up.railway.app/api/auth/profile", {
+      await fetch("https://unischedule2-production.up.railway.app/api/auth/profile", {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ profileImage: "" })
@@ -56,7 +56,7 @@ export default function SettingsModal({ onClose }) {
   const handleSaveProfile = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("unischedule2-production.up.railway.app/api/auth/profile", {
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/auth/profile", {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ profileImage: profileImage })
