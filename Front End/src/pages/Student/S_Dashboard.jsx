@@ -175,7 +175,7 @@ const S_Dashboard = () => {
         const selectedSchedule = selectedOp.schedule || selectedOp;
 
         try {
-            const res = await fetch("http://localhost:5001/api/registration/register", {
+            const res = await fetch("https://unischedule2-production.up.railway.app/api/registration/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ schedule: selectedSchedule })
@@ -401,7 +401,7 @@ const S_Dashboard = () => {
                                 setReviewTarget(null);
                                 // Refresh reviews
                                 const token = localStorage.getItem('token');
-                                fetch("http://localhost:5001/api/reviews/my", { headers: { Authorization: `Bearer ${token}` } })
+                                fetch("https://unischedule2-production.up.railway.app/api/reviews/my", { headers: { Authorization: `Bearer ${token}` } })
                                     .then(r => r.json()).then(d => setMyReviews(Array.isArray(d) ? d : [])).catch(() => { });
                             }}
                         />
