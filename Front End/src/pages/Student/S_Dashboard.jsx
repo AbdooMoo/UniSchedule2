@@ -130,7 +130,7 @@ const S_Dashboard = () => {
         setIsBlocked(false);
         const token = localStorage.getItem('token');
         try {
-            const optRes = await fetch("http://localhost:5001/api/registration/generate-options", { headers: { Authorization: `Bearer ${token}` } });
+            const optRes = await fetch("https://unischedule2-production.up.railway.app/api/registration/generate-options", { headers: { Authorization: `Bearer ${token}` } });
             if (optRes.ok) {
                 const optData = await optRes.json();
                 parseGeneratorResponse(optData);
