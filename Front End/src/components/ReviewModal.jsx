@@ -61,7 +61,7 @@ export default function ReviewModal({ course, onClose, existingReview }) {
     setStatus(null);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("unischedule2-production.up.railway.app/api/reviews", {
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/reviews", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({
