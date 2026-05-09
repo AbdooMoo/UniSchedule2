@@ -21,7 +21,7 @@ export default function Requests() {
 
   const fetchStatus = async () => {
     try {
-      const res = await fetch("http://localhost:5001/api/requests/status");
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/requests/status");
       const data = await res.json();
       setIsRequestsOpen(data.isRequestsOpen);
     } catch (e) {
@@ -32,7 +32,7 @@ export default function Requests() {
   const toggleStatus = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch("http://localhost:5001/api/requests/toggle-status", {
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/requests/toggle-status", {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}` }
       });
@@ -46,7 +46,7 @@ export default function Requests() {
   const fetchRequests = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5001/api/requests");
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/requests");
       const data = await res.json();
       setRequests(data);
     } catch (e) {
@@ -65,7 +65,7 @@ export default function Requests() {
 
     if (req.type === 'Add' && status === 'Approved') {
       try {
-        const res = await fetch(`http://localhost:5001/api/courses/${req.course._id}`);
+        const res = await fetch(`https://unischedule2-production.up.railway.app/api/courses/${req.course._id}`);
         const courseData = await res.json();
         setAvailableSections(courseData.sections || []);
       } catch (e) {
@@ -87,7 +87,7 @@ export default function Requests() {
       return;
     }
     try {
-      const res = await fetch(`http://localhost:5001/api/requests/${selectedRequest._id}`, {
+      const res = await fetch(`https://unischedule2-production.up.railway.app/api/requests/${selectedRequest._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: actionStatus, adminReply, selectedSections })
