@@ -113,7 +113,7 @@ export default function Students() {
     setShowScheduleModal(true);
     try {
         const token = localStorage.getItem('token');
-        const res = await fetch(`http://localhost:5001/api/registration/student-schedule/${student._id}`, {
+        const res = await fetch(`https://unischedule2-production.up.railway.app/api/registration/student-schedule/${student._id}`, {
             headers: { "Authorization": `Bearer ${token}` }
         });
         if (res.ok) {
