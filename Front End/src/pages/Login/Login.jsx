@@ -20,7 +20,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5001/api/auth/login", {
+      const response = await fetch(API_BASE_URL + "/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -47,7 +47,7 @@ function Login() {
   const handleRequestOTP = async () => {
     if (!resetEmail) return toast("Please enter your email.", "warning");
     try {
-      const res = await fetch("http://localhost:5001/api/auth/request-reset", {
+      const res = await fetch(API_BASE_URL + "/api/auth/request-reset", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: resetEmail })
@@ -66,7 +66,7 @@ function Login() {
   const handleResetPassword = async () => {
     if (!otp || !newPassword) return toast("Please fill all fields.", "warning");
     try {
-      const res = await fetch("http://localhost:5001/api/auth/reset-password", {
+      const res = await fetch(API_BASE_URL + "/api/auth/reset-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: resetEmail, otp, newPassword })
