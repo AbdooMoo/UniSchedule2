@@ -27,15 +27,6 @@ app.use('/api/chat', chatbotRoutes);
 app.use('/api/reviews', reviewRoutes);
  app.get('/api/health', (req, res) => res.json({ status: "ok" }));
 
- const path = require('path');
- app.use(express.static(path.join(__dirname, '../Front End/dist')));
-
- 
-app.get(/.*/, (req, res) => {
-  if (!req.path.startsWith('/api/')) {
-    res.sendFile(path.join(__dirname, '../Front End/dist/index.html'));
-  }
-});
 // ------------------------------------
  const PORT = process.env.PORT || 5001; 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/unischedule';
