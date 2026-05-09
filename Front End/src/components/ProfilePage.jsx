@@ -37,7 +37,7 @@ export default function ProfilePage({ role = "student", extraFields = [] }) {
       setStatusMsg(null);
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5001/api/auth/profile", {
+        const res = await fetch("unischedule2-production.up.railway.app/api/auth/profile", {
           method: "PUT",
           headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
           body: JSON.stringify({ profileImage: base64 }),
@@ -66,7 +66,7 @@ export default function ProfilePage({ role = "student", extraFields = [] }) {
     setStatusMsg(null);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5001/api/auth/profile", {
+      const res = await fetch("unischedule2-production.up.railway.app/api/auth/profile", {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ profileImage: "" }),
