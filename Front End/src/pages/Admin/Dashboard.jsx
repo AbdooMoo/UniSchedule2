@@ -8,10 +8,10 @@ export default function Dashboard() {
     const fetchStats = async () => {
       try {
         const [resStudents, resTeachers, resCourses, resRooms] = await Promise.all([
-          fetch("http://localhost:5001/api/students"),
-          fetch("http://localhost:5001/api/teachers"),
-          fetch("http://localhost:5001/api/courses"),
-          fetch("http://localhost:5001/api/rooms")
+          fetch("https://unischedule2-production.up.railway.app/api/students"),
+          fetch("https://unischedule2-production.up.railway.app/api/teachers"),
+          fetch("https://unischedule2-production.up.railway.app/api/courses"),
+          fetch("https://unischedule2-production.up.railway.app/api/rooms")
         ]);
         const students = await resStudents.json();
         const teachers = await resTeachers.json();
