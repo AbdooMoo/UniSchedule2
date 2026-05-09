@@ -97,7 +97,7 @@ export default function Students() {
   const handleDelete = async (id) => {
     if(!window.confirm("Are you sure?")) return;
     try {
-      const res = await fetch(`http://localhost:5001/api/students/${id}`, { method: "DELETE" });
+      const res = await fetch(`https://unischedule2-production.up.railway.app/api/students/${id}`, { method: "DELETE" });
       if(res.ok) {
           setStudents(students.filter(s => s._id !== id));
       }
