@@ -92,17 +92,17 @@ const S_Dashboard = () => {
         setIsBlocked(false);
         const token = localStorage.getItem('token');
         try {
-            const statusRes = await fetch("http://localhost:5001/api/registration/status");
+            const statusRes = await fetch("https://unischedule2-production.up.railway.app/api/registration/status");
             const statusData = await statusRes.json();
             setIsRegistrationOpen(statusData.isRegistrationOpen);
 
-            const mySchedRes = await fetch("http://localhost:5001/api/registration/my-schedule", { headers: { Authorization: `Bearer ${token}` } });
+            const mySchedRes = await fetch("https://unischedule2-production.up.railway.app/api/registration/my-schedule", { headers: { Authorization: `Bearer ${token}` } });
             if (mySchedRes.ok) {
                 const mySchedData = await mySchedRes.json();
                 setMySchedule(mySchedData && mySchedData.length > 0 ? mySchedData : null);
 
                 if (statusData.isRegistrationOpen && (!mySchedData || mySchedData.length === 0 || editingSchedule)) {
-                    const optRes = await fetch("http://localhost:5001/api/registration/generate-options", { headers: { Authorization: `Bearer ${token}` } });
+                    const optRes = await fetch("https://unischedule2-production.up.railway.app/api/registration/generate-options", { headers: { Authorization: `Bearer ${token}` } });
                     if (optRes.ok) {
                         const optData = await optRes.json();
                         parseGeneratorResponse(optData);
