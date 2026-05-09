@@ -88,7 +88,7 @@ export default function SettingsModal({ onClose }) {
     }
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("unischedule2-production.up.railway.app/api/auth/change-password", {
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/auth/change-password", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ oldPassword: oldPass, newPassword: newPass }),
