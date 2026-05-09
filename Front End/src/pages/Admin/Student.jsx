@@ -25,7 +25,7 @@ export default function Students() {
   const [studentScheduleData, setStudentScheduleData] = useState([]);
   const [fetchingSchedule, setFetchingSchedule] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:5001/api/students")
+    fetch("https://unischedule2-production.up.railway.app/api/students")
       .then(async res => {
           if(!res.ok) {
               throw new Error(`HTTP error! status: ${res.status}`);
@@ -61,8 +61,8 @@ export default function Students() {
     }
     try {
       const url = editStudent 
-        ? `http://localhost:5001/api/students/${editStudent._id}` 
-        : "http://localhost:5001/api/students";
+        ? `https://unischedule2-production.up.railway.app/api/students/${editStudent._id}` 
+        : "https://unischedule2-production.up.railway.app/api/students";
       const res = await fetch(url, {
         method: editStudent ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
