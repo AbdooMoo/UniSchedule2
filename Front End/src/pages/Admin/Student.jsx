@@ -134,7 +134,7 @@ export default function Students() {
     setFetchingSchedule(true);
     const token = localStorage.getItem('token');
     try {
-        const res = await fetch(`http://localhost:5001/api/registration/clear-student-schedule/${studentId}`, {
+        const res = await fetch(`https://unischedule2-production.up.railway.app/api/registration/clear-student-schedule/${studentId}`, {
             method: "DELETE",
             headers: { "Authorization": `Bearer ${token}` }
         });
