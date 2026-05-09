@@ -37,7 +37,7 @@ const T_Dashboard = () => {
       else if (user.avatar) setAvatar(user.avatar);
       setTeacherId(user._id || user.id);
 
-      fetch(`http://localhost:5001/api/teachers/${user._id || user.id}`)
+      fetch(`https://unischedule2-production.up.railway.app/api/teachers/${user._id || user.id}`)
         .then(res => res.json())
         .then(data => {
           if (data) {
@@ -57,7 +57,7 @@ const T_Dashboard = () => {
 
   const savePreferences = async (updatedCourses, updatedTimes) => {
     try {
-      const res = await fetch(`http://localhost:5001/api/teachers/${teacherId}/preferences`, {
+      const res = await fetch(`https://unischedule2-production.up.railway.app/api/teachers/${teacherId}/preferences`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ preferredCourses: updatedCourses, availableTimes: updatedTimes })
