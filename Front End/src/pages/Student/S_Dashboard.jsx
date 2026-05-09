@@ -56,7 +56,7 @@ const S_Dashboard = () => {
     // Fetch student's existing reviews for badge display
     useEffect(() => {
         const token = localStorage.getItem('token');
-        fetch("http://localhost:5001/api/reviews/my", { headers: { Authorization: `Bearer ${token}` } })
+        fetch("https://unischedule2-production.up.railway.app/api/reviews/my", { headers: { Authorization: `Bearer ${token}` } })
             .then(r => r.ok ? r.json() : [])
             .then(d => setMyReviews(Array.isArray(d) ? d : []))
             .catch(() => { });
