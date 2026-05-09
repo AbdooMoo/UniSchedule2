@@ -13,7 +13,7 @@ export default function Rooms() {
   const [selectedDetailsItem, setSelectedDetailsItem] = useState(null);
   const [form, setForm] = useState({ name: "", capacity: "", type: "Lecture Hall" });
   useEffect(() => {
-    fetch("http://localhost:5001/api/rooms")
+    fetch("https://unischedule2-production.up.railway.app/api/rooms")
       .then(res => res.json())
       .then(data => setRooms(data))
       .catch(err => console.error("Fetch error:", err));
@@ -24,7 +24,7 @@ export default function Rooms() {
       return;
     }
     try {
-      const url = editRoom ? `http://localhost:5001/api/rooms/${editRoom._id}` : "http://localhost:5001/api/rooms";
+      const url = editRoom ? `https://unischedule2-production.up.railway.app/api/rooms/${editRoom._id}` : "https://unischedule2-production.up.railway.app/api/rooms";
       const res = await fetch(url, {
         method: editRoom ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
