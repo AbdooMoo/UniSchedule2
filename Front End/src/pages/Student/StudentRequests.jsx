@@ -21,7 +21,7 @@ export default function StudentRequests() {
 
   const fetchStatus = async () => {
     try {
-      const res = await fetch("http://localhost:5001/api/requests/status");
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/requests/status");
       const data = await res.json();
       setIsRequestsOpen(data.isRequestsOpen);
     } catch (e) {
@@ -31,7 +31,7 @@ export default function StudentRequests() {
 
   const fetchCourses = async () => {
     try {
-      const res = await fetch("http://localhost:5001/api/courses");
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/courses");
       const data = await res.json();
       setCourses(data);
     } catch (e) {
@@ -55,7 +55,7 @@ export default function StudentRequests() {
     
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5001/api/requests", {
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/requests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
