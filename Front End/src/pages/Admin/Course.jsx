@@ -33,7 +33,7 @@ export default function Courses() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5001/api/courses").then(res => res.json()).then(data => setCourses(data));
+    fetch("https://unischedule2-production.up.railway.app/api/courses").then(res => res.json()).then(data => setCourses(data));
   }, []);
 
   const filtered = courses.filter(c => 
@@ -51,7 +51,7 @@ export default function Courses() {
 
     if (!editCourse) payload.sections = [];
 
-    const url = editCourse ? `http://localhost:5001/api/courses/${editCourse._id}` : "http://localhost:5001/api/courses";
+    const url = editCourse ? `https://unischedule2-production.up.railway.app/api/courses/${editCourse._id}` : "https://unischedule2-production.up.railway.app/api/courses";
     const res = await fetch(url, {
       method: editCourse ? "PUT" : "POST",
       headers: { "Content-Type": "application/json" },
