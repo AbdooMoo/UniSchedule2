@@ -14,7 +14,7 @@ export default function GenerateTimetable() {
 
   const fetchStatus = async () => {
     try {
-        const res = await fetch("http://localhost:5001/api/registration/status");
+        const res = await fetch("https://unischedule2-production.up.railway.app/api/registration/status");
         const data = await res.json();
         setIsRegOpen(data.isRegistrationOpen);
     } catch (e) {
@@ -27,7 +27,7 @@ export default function GenerateTimetable() {
     setToggling(true);
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch("http://localhost:5001/api/registration/toggle-status", {
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/registration/toggle-status", {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}` }
       });
@@ -51,7 +51,7 @@ export default function GenerateTimetable() {
     setToggling(true);
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch("http://localhost:5001/api/registration/reset", {
+      const res = await fetch("https://unischedule2-production.up.railway.app/api/registration/reset", {
         method: "POST",
         headers: { "Authorization": `Bearer ${token}` }
       });
