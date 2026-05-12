@@ -73,15 +73,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={
+         <Route path="/" element={
           <PublicRoute>
             <Login />
           </PublicRoute>
         } />
 
-        {/* Admin Routes */}
-        <Route path="/admin" element={
+         <Route path="/admin" element={
           <ProtectedRoute allowedRoles={["admin"]}>
             <AdminLayout />
           </ProtectedRoute>
@@ -99,22 +97,19 @@ function App() {
           <Route path="GenerateTimetable" element={<GenerateTimetable />} />
         </Route>
 
-        {/* Student Routes */}
-        <Route path="/student" element={
+         <Route path="/student" element={
           <ProtectedRoute allowedRoles={["student"]}>
             <S_Dashboard />
           </ProtectedRoute>
         } />
 
-        {/* Teacher Routes */}
-        <Route path="/teacher" element={
+         <Route path="/teacher" element={
           <ProtectedRoute allowedRoles={["teacher"]}>
             <T_Dashboard />
           </ProtectedRoute>
         } />
 
-        {/* Fallback route */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
