@@ -77,7 +77,7 @@ function ToastItem({ id, message, type = 'info', onRemove, duration = 4000 }) {
       >
         <X size={14} />
       </button>
-      {/* Progress bar */}
+      
       <div style={{
         position: 'absolute', bottom: 0, left: 0,
         height: '3px', background: colors.bar, opacity: 0.4,
@@ -102,8 +102,7 @@ export function ToastProvider({ children }) {
     setToasts(prev => prev.filter(t => t.id !== id));
   }, []);
 
-  // Expose globally
-  useEffect(() => {
+   useEffect(() => {
     globalAddToast = addToast;
     return () => { globalAddToast = null; };
   }, [addToast]);
@@ -118,8 +117,7 @@ export function ToastProvider({ children }) {
           to   { transform: translateX(0);    opacity: 1; }
         }
       `}</style>
-      {/* Toast container */}
-      {toasts.length > 0 && (
+       {toasts.length > 0 && (
         <div style={{
           position: 'fixed', top: '20px', right: '20px',
           display: 'flex', flexDirection: 'column', gap: '10px',
@@ -136,20 +134,17 @@ export function ToastProvider({ children }) {
   );
 }
 
-// Hook for components inside ToastProvider
-export function useToast() {
+ export function useToast() {
   const ctx = useContext(ToastContext);
   if (!ctx) throw new Error('useToast must be used inside <ToastProvider>');
   return ctx;
 }
 
-// Global function for use anywhere (after ToastProvider mounts)
-export function toast(message, type = 'info', duration = 4000) {
+ export function toast(message, type = 'info', duration = 4000) {
   if (globalAddToast) {
     globalAddToast(message, type, duration);
   } else {
-    // Fallback if provider not mounted yet
-    console.warn('[Toast]', message);
+     console.warn('[Toast]', message);
   }
 }
 
