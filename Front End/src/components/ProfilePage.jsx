@@ -2,12 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Camera, Mail, IdCard, Shield, X, CheckCircle2, AlertCircle, Expand, Trash2 } from "lucide-react";
 import API_BASE_URL from "../apiConfig";
 
-/**
- * Reusable full profile page component.
- * Props:
- *   - role: "admin" | "student" | "teacher"
- *   - extraFields: array of { label, value } for role-specific info
- */
+ 
 export default function ProfilePage({ role = "student", extraFields = [] }) {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
@@ -17,8 +12,7 @@ export default function ProfilePage({ role = "student", extraFields = [] }) {
   const [statusMsg, setStatusMsg] = useState(null); // { type: "success"|"error", text }
   const fileRef = useRef();
 
-  // Refresh if localStorage changes (e.g. from SettingsModal)
-  useEffect(() => {
+   useEffect(() => {
     const u = JSON.parse(localStorage.getItem("user") || "{}");
     if (u.profileImage) setProfileImage(u.profileImage);
   }, []);
@@ -94,16 +88,16 @@ export default function ProfilePage({ role = "student", extraFields = [] }) {
 
   return (
     <div style={{ background: "white", borderRadius: "12px", border: "1px solid #eee", overflow: "hidden" }}>
-      {/* Banner */}
+      { }
       <div style={{
         height: "120px",
         background: "linear-gradient(135deg, #1a2e1a 0%, #2d6a2d 60%, #4a9a4a 100%)",
         position: "relative",
       }} />
 
-      {/* Avatar + info section */}
+       
       <div style={{ padding: "0 32px 32px", position: "relative" }}>
-        {/* Avatar positioned over banner */}
+        
         <div style={{ position: "relative", display: "inline-block", marginTop: "-52px", marginBottom: "16px" }}>
           <div
             onClick={() => profileImage && setLightboxOpen(true)}
@@ -123,7 +117,7 @@ export default function ProfilePage({ role = "student", extraFields = [] }) {
               : initial
             }
           </div>
-          {/* Camera button */}
+          
           <button
             onClick={() => fileRef.current.click()}
             disabled={uploading}
@@ -161,7 +155,7 @@ export default function ProfilePage({ role = "student", extraFields = [] }) {
           )}
           <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} style={{ display: "none" }} />
 
-          {/* Expand hint */}
+          
           {profileImage && (
             <div
               onClick={() => setLightboxOpen(true)}
@@ -177,7 +171,7 @@ export default function ProfilePage({ role = "student", extraFields = [] }) {
           )}
         </div>
 
-        {/* Name + Role badge */}
+        
         <div style={{ marginBottom: "20px" }}>
           <h2 style={{ fontSize: "22px", fontWeight: "700", margin: "0 0 6px", color: "#1a1a1a" }}>{user.name || "—"}</h2>
           <span style={{
@@ -189,7 +183,7 @@ export default function ProfilePage({ role = "student", extraFields = [] }) {
           </span>
         </div>
 
-        {/* Status message */}
+        { }
         {statusMsg && (
           <div style={{
             display: "flex", alignItems: "center", gap: "8px",
@@ -204,7 +198,7 @@ export default function ProfilePage({ role = "student", extraFields = [] }) {
           </div>
         )}
 
-        {/* Info cards */}
+        
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "14px" }}>
           {[
             { label: "Full Name", value: user.name, icon: <IdCard size={15} color="#1a431e" /> },
@@ -227,7 +221,7 @@ export default function ProfilePage({ role = "student", extraFields = [] }) {
         </p>
       </div>
 
-      {/* Lightbox */}
+      { }
       {lightboxOpen && profileImage && (
         <div
           onClick={() => setLightboxOpen(false)}
