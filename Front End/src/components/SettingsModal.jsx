@@ -11,18 +11,16 @@ export default function SettingsModal({ onClose }) {
   const [profileImage, setProfileImage] = useState(user.profileImage || null);
   const fileRef = useRef();
 
-  // Password
-  const [oldPass, setOldPass] = useState("");
+   const [oldPass, setOldPass] = useState("");
   const [newPass, setNewPass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [showOld, setShowOld] = useState(false);
   const [showNew, setShowNew] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [passStatus, setPassStatus] = useState(null); // "success" | "error"
+  const [passStatus, setPassStatus] = useState(null);  
   const [passMsg, setPassMsg] = useState("");
 
-  // Active tab
-  const [tab, setTab] = useState("profile");
+   const [tab, setTab] = useState("profile");
 
   useEffect(() => {
     const handler = (e) => { if (e.key === "Escape") onClose(); };
