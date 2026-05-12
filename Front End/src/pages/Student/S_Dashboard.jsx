@@ -53,8 +53,7 @@ const S_Dashboard = () => {
         fetchData();
     }, [showSettings]);
 
-    // Fetch student's existing reviews for badge display
-    useEffect(() => {
+     useEffect(() => {
         const token = localStorage.getItem('token');
         fetch("https://unischedule2-production.up.railway.app/api/reviews/my", { headers: { Authorization: `Bearer ${token}` } })
             .then(r => r.ok ? r.json() : [])
@@ -204,8 +203,7 @@ const S_Dashboard = () => {
     ];
 
 
-    // ─── STABLE HOURLY SLOT CALCULATION ───
-    const GLOBAL_MIN_H = 8;
+     const GLOBAL_MIN_H = 8;
     const GLOBAL_MAX_H = 20;
 
     const masterSlots = useMemo(() => {
@@ -222,8 +220,7 @@ const S_Dashboard = () => {
         return intervals;
     }, []);
 
-    // ─── DYNAMIC TIMETABLE GRID ───
-    const displayScheduleGrid = (scheduleArray, forcedSlots) => {
+     const displayScheduleGrid = (scheduleArray, forcedSlots) => {
         if (!scheduleArray || scheduleArray.length === 0) return <div style={{ padding: "20px", color: "#888", textAlign: "center" }}>No items found.</div>;
 
         let linearSlots = forcedSlots;
@@ -437,13 +434,11 @@ const S_Dashboard = () => {
             );
         }
 
-        // activePage === "schedule" (default)
-        if (loading) {
+         if (loading) {
             return <div style={{ padding: "100px", textAlign: "center" }}><Loader2 className="lucide-spin" size={40} color="#1a431e" /></div>;
         }
 
-        // Show schedule if registered AND not editing
-        if (mySchedule && !editingSchedule) {
+         if (mySchedule && !editingSchedule) {
             return (
                 <div style={{ background: "white", borderRadius: "12px", border: "1px solid #eee", padding: "24px" }}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px" }}>
@@ -475,8 +470,7 @@ const S_Dashboard = () => {
             );
         }
 
-        // Generator view (reg open, no schedule OR editing)
-        return (
+         return (
             <div style={{ background: "white", borderRadius: "12px", border: "1px solid #eee", padding: "24px" }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px" }}>
                     <div>
@@ -644,7 +638,7 @@ const S_Dashboard = () => {
                 </div>
             </aside>
 
-            {/* Main Content */}
+            {}
             <main className="main-content" style={{ flex: 1, background: "#f5f7f5", padding: "0 32px 32px", overflowY: "auto" }}>
                 <div className="page-header" style={{ padding: "24px 0 20px" }}>
                     <div style={{ fontSize: "13px", color: "#888", marginBottom: "4px" }}>UniSchedule / Student Portal</div>
