@@ -339,8 +339,7 @@ const S_Dashboard = () => {
                     </div>
                 );
             }
-            // Build unique courses from schedule
-            const seenCodes = new Set();
+             const seenCodes = new Set();
             const uniqueCourses = mySchedule.filter(item => {
                 if (seenCodes.has(item.courseCode)) return false;
                 seenCodes.add(item.courseCode);
@@ -396,8 +395,7 @@ const S_Dashboard = () => {
                             existingReview={reviewTarget.existingReview}
                             onClose={() => {
                                 setReviewTarget(null);
-                                // Refresh reviews
-                                const token = localStorage.getItem('token');
+                                 const token = localStorage.getItem('token');
                                 fetch("https://unischedule2-production.up.railway.app/api/reviews/my", { headers: { Authorization: `Bearer ${token}` } })
                                     .then(r => r.json()).then(d => setMyReviews(Array.isArray(d) ? d : [])).catch(() => { });
                             }}
