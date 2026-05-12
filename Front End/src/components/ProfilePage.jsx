@@ -9,7 +9,7 @@ export default function ProfilePage({ role = "student", extraFields = [] }) {
   const [profileImage, setProfileImage] = useState(user.profileImage || null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [statusMsg, setStatusMsg] = useState(null); // { type: "success"|"error", text }
+  const [statusMsg, setStatusMsg] = useState(null);  
   const fileRef = useRef();
 
    useEffect(() => {
